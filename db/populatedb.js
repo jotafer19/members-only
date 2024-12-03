@@ -32,11 +32,11 @@ VALUES
 ('Goodbye', 'I am leaving for a while.', 3),
 ('Holiday Plans', 'Looking forward to the holidays!', 1);
 `
-
+require("dotenv").config()
 async function main() {
     console.log("seeding...")
     const client = new Client({
-        connectionString: "postgresql://jairo:159263@localhost:5432/members_only",
+        connectionString: process.env.DATABASE_URL,
     })
 
     await client.connect()
