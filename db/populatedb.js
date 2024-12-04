@@ -1,4 +1,5 @@
 const {Client} = require("pg")
+require("dotenv").config()
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
@@ -6,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     username VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     membership_status VARCHAR(50) DEFAULT 'inactive'
 );
 
@@ -32,7 +33,7 @@ VALUES
 ('Goodbye', 'I am leaving for a while.', 3),
 ('Holiday Plans', 'Looking forward to the holidays!', 1);
 `
-require("dotenv").config()
+
 async function main() {
     console.log("seeding...")
     const client = new Client({
