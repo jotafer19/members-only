@@ -17,8 +17,10 @@ const validateUser = [
         .normalizeEmail()
         .isEmail().withMessage("You should enter a valid email")
         .custom(async value => {
-            const user = await db.findUserByEmail(value.toLowerCase())
-            if (user) {
+            const allEmails = await db.getAllEmails()
+            const isUsed = allEmails.find(email => email.username === value.toLowerCase())
+
+            if (isUsed) {
                 throw new Error("Email is already in use")
             }
         }),
@@ -58,7 +60,7 @@ exports.signUpPost = [
             }
 
             try {
-                await db.newUser({
+                await db.addNewUser({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     username: req.body.username,
