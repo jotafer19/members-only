@@ -4,6 +4,9 @@ const db = require("../db/query")
 require("dotenv").config()
 
 exports.membershipGet = (req, res) => {
+    if (!req.isAuthenticated()) {
+        return res.redirect("/")
+    }
     res.render("membership-form")
 }
 

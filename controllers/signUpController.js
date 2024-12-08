@@ -40,6 +40,9 @@ const validateUser = [
 ]
 
 exports.signUpGet = (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect("/")
+    }
     res.render("sign-up-form")
 }
 

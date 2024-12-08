@@ -6,6 +6,7 @@ const flash = require("connect-flash")
 require("dotenv").config()
 
 // Routes import
+const indexRouter = require("./routes/indexRouter")
 const signUpRouter = require("./routes/signUpRouter")
 const logInRouter = require("./routes/logInRouter")
 const logOutRouter = require("./routes/logOutRouter")
@@ -36,15 +37,17 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use((req, res, next) => {
+    res.locals.messages = req.flash()
+    next()
+})
+
 app.use(express.static(path.join(__dirname, "public")))
 
-app.get("/", (req, res) => {
-    const error = req.flash("error")
-    res.render("index", {error})
-})
+app.use("/", indexRouter)
 app.use("/sign-up", signUpRouter)
-app.use("/log-in", logInRouter)
-app.use("/log-out", logOutRouter)
+app.use("/login", logInRouter)
+app.use("/logout", logOutRouter)
 app.use("/membership", membershipRouter)
 
 app.use((err, req, res, next) => {

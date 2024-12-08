@@ -6,11 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (locals.currentUser) { %>
-        <h1>Welcome <%= currentUser.first_name %> <%= currentUser.last_name %></h1>
-    <% } else { %>
-        <%- include("partials/log-in-form", {error}) %>>
-    <% } %>
-    <a href="/log-out">Log Out</a>
+    <% console.log(currentUser) %>
+    <h1>Welcome <%= locals.currentUser.username %></h1>
+    <a href="/logout">Log Out</a>
 </body>
 </html>
