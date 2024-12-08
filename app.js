@@ -9,6 +9,7 @@ require("dotenv").config()
 const signUpRouter = require("./routes/signUpRouter")
 const logInRouter = require("./routes/logInRouter")
 const logOutRouter = require("./routes/logOutRouter")
+const membershipRouter = require("./routes/membershipRouter")
 
 // App init
 const app = express()
@@ -44,6 +45,7 @@ app.get("/", (req, res) => {
 app.use("/sign-up", signUpRouter)
 app.use("/log-in", logInRouter)
 app.use("/log-out", logOutRouter)
+app.use("/membership", membershipRouter)
 
 app.use((err, req, res, next) => {
     console.log(err)
