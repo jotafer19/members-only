@@ -1,7 +1,7 @@
 const pool = require("./pool")
 
 async function getAllMessages() {
-    const {rows} = await pool.query("SELECT u.first_name, u.last_name, m.title, m.text, m.date FROM users u JOIN messages m ON u.id = m.user_id ORDER BY m.date DESC")
+    const {rows} = await pool.query("SELECT u.first_name, u.last_name, m.id AS message_id, m.title, m.text, m.date, m.user_id FROM users u JOIN messages m ON u.id = m.user_id ORDER BY m.date DESC")
     return rows;
 }
 
@@ -9,8 +9,8 @@ async function addNewUser({firstName, lastName, username, password}) {
     await pool.query("INSERT INTO users(first_name, last_name, username, password) VALUES ($1, $2, $3, $4)", [firstName, lastName, username, password])
 }
 
-async function addNewMessage(userId, {title, text}) {
-    await pool.query("INSERT INTO messages(user_id, title, text) VALUES ($1, $2, $3)", [userId, title, text])
+async function addNewMessage(title, text, userId ) {
+    await pool.query("INSERT INTO messages(title, text, user_id) VALUES ($1, $2, $3)", [title, text, userId])
 }
 
 async function deleteMessage(messageId) {
@@ -36,6 +36,11 @@ async function upgradeMembership(user) {
     await pool.query("UPDATE users SET membership_status = true WHERE username = $1", [user.username])
 }
 
+async function getMessagesByUser(userId) {
+    const {rows} = await pool.query("SELECT u.first_name, u.last_name, m.id AS message_id, m.title, m.text, m.date, m.user_id FROM users u JOIN messages m ON u.id = m.user_id WHERE m.user_id = $1", [userId])
+    return rows;
+}
+
 module.exports = {
     getAllMessages,
     addNewUser,
@@ -44,5 +49,6 @@ module.exports = {
     getAllEmails,
     getUserByEmail,
     getUserById,
-    upgradeMembership
+    upgradeMembership,
+    getMessagesByUser
 }

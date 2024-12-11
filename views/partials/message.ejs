@@ -1,0 +1,15 @@
+<div class="message">
+    <h2 class="message-title"><%= message.title %></h2>
+    <p class="message-description"><%= message.text %></p>
+    <% console.log(message) %>
+    <% if (isMember) { %>
+        <p>By: <a href="/user/<%= message.user_id %>/"><%= message.first_name %> <%= message.last_name %></a>, <%= new Date(message.date).toLocaleString('en-GB').replace(",", " ")%></p>
+    <% } else {%>
+        <p>By: Anonymous</p>
+    <% } %>
+    <% if (message.user_id === locals.currentUser.id) { %>
+        <form action="/messages/<%= message.message_id %>/delete" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    <% } %>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/messages/create" method="post">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<% locals.oldInput ? oldInput.title : "" %>">
+        <% if (locals.errors) { %>
+            <% const titleError = errors.find(error => error.path === "title") %>
+            <% if (titleError) { %>
+                <span><%= titleError.msg %></span>
+            <% } %>
+        <% } %>
+        <label for="description">Description</label>
+        <textarea name="description" id="description"><%= locals.oldInput ? oldInput.description : "" %></textarea>
+        <% if (locals.errors) { %>
+            <% const descriptionError = errors.find(error => error.path === "description") %>
+            <% if (descriptionError) { %>
+                <span><%= descriptionError.msg %></span>
+            <% } %>
+        <% } %>
+        <button type="submit">Add message</button>
+    </form>
+</body>
+</html>

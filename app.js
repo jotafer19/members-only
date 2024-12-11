@@ -11,6 +11,8 @@ const signUpRouter = require("./routes/signUpRouter")
 const logInRouter = require("./routes/logInRouter")
 const logOutRouter = require("./routes/logOutRouter")
 const membershipRouter = require("./routes/membershipRouter")
+const messagesRouter = require("./routes/messagesRouter")
+const userRouter = require("./routes/userRouter")
 
 // App init
 const app = express()
@@ -49,6 +51,8 @@ app.use("/sign-up", signUpRouter)
 app.use("/login", logInRouter)
 app.use("/logout", logOutRouter)
 app.use("/membership", membershipRouter)
+app.use("/messages", messagesRouter)
+app.use("/user", userRouter)
 
 app.use((err, req, res, next) => {
     console.log(err)

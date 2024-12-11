@@ -6,11 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <% console.log(currentUser) %>
-    <h1>Welcome <%= locals.currentUser.username %></h1>
+    <h1><%= user.first_name %> messages</h1>
     <% messages.forEach(message => { %>
-        <%- include("partials/message", {message: message, isMember: isMember}) %>
+        <%- include("partials/message", {message: message, isMember: currentUser.membership_status}) %>
     <% }) %>
-    <a href="/logout">Log Out</a>
 </body>
 </html>
