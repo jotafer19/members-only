@@ -33,7 +33,11 @@ async function getUserById(userId) {
 }
 
 async function upgradeMembership(user) {
-    await pool.query("UPDATE users SET membership_status = true WHERE username = $1", [user.username])
+    await pool.query("UPDATE users SET membership_status = true WHERE id = $1", [user.id])
+}
+
+async function upgradeAdmin(user) {
+    await pool.query("UPDATE users SET membership_status = true, admin_status = true WHERE id = $1", [user.id])
 }
 
 async function getMessagesByUser(userId) {
@@ -50,5 +54,6 @@ module.exports = {
     getUserByEmail,
     getUserById,
     upgradeMembership,
+    upgradeAdmin,
     getMessagesByUser
 }

@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <% console.log(currentUser) %>
     <h1>Welcome <%= locals.currentUser.username %></h1>
     <% messages.forEach(message => { %>
         <%- include("partials/message", {message: message, isMember: isMember}) %>

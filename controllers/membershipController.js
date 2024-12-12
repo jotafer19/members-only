@@ -14,7 +14,7 @@ const validateCode = [
     body("code")
         .trim()
         .custom(value => {
-            if (value !== process.env.SECRET_CODE) {
+            if (value !== process.env.MEMBER_CODE && value !== process.env.ADMIN_CODE) {
                 throw new Error("The code is not valid")
             }
 
@@ -34,7 +34,13 @@ exports.membershipPost = [
         }
         
         const user = req.user
-        await db.upgradeMembership(user)
+        
+        if (req.body.code === process.env.MEMBER_CODE) {
+            await db.upgradeMembership(user)
+        } else if (req.body.code === process.env.ADMIN_CODE) {
+            await db.upgradeAdmin(user)
+        }
+        
         res.redirect("/")
     }
 ]
