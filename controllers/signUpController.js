@@ -5,16 +5,15 @@ const db = require("../db/query")
 const validateUser = [
     body("firstName")
         .trim()
-        .notEmpty()
-        .isLength({ min: 1, max: 50 }).withMessage("First name must be between 1 and 50 characters"),
+        .notEmpty().withMessage("First name is required")
+        .isLength({ max: 50 }).withMessage("First name must be between 1 and 50 characters"),
     body("lastName")
         .trim()
-        .notEmpty()
-        .isLength({ min: 1, max: 50 }).withMessage("Last name must be between 1 and 50 characters"),
+        .notEmpty().withMessage("Last name is required")
+        .isLength({ max: 50 }).withMessage("Last name must be between 1 and 50 characters"),
     body("username")
         .trim()
-        .notEmpty()
-        .normalizeEmail()
+        .notEmpty().withMessage("Email is required")
         .isEmail().withMessage("You should enter a valid email")
         .custom(async value => {
             const allEmails = await db.getAllEmails()
@@ -53,6 +52,7 @@ exports.signUpPost = [
         
         if (!errors.isEmpty()) {
             return res.status(400).render("sign-up-form", {
+                oldInput: req.body,
                 errors: errors.array()
             })
         }

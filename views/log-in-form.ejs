@@ -1,10 +1,31 @@
-<form action="/login" method="post">
-    <label for="username">Email</label>
-    <input type="email" name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <% if (locals.messages) { %>
-        <span><%= messages.error %></span>
-    <% } %>
-    <button type="submit">Log In</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div class="form-content">
+        <div class="form-container">
+            <h1 class="form-title">Login</h1>
+            <form class="form" action="/login" method="post">
+                <div class="form-element">
+                    <label class="label" for="username">Email</label>
+                    <input class="input" type="email" name="username" id="username">
+                </div>
+                <div class="form-element">
+                    <label class="label" for="password">Password</label>
+                    <input class="input" type="password" name="password" id="password">
+                    <% if (locals.flashMessages.error) { %>
+                        <span class="err form-err"><%= flashMessages.error %></span>
+                    <% } %>
+                </div>
+                <div class="form-element"><button class="btn" type="submit">Log in</button></div>
+            </form>
+            <p class="form-text">Don't have an account? <a href="/sign-up">Sign up</a> </p>
+        </div>
+    </div>
+</body>
+</html>

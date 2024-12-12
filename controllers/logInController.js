@@ -11,6 +11,6 @@ exports.logInPost = (req, res, next) => {
     passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/login",
-        failureFlash: true
+        failureFlash: "Incorrect email or password"
     })(req, res, next)
 }

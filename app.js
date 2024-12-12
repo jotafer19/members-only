@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 })
 
 app.use((req, res, next) => {
-    res.locals.messages = req.flash()
+    res.locals.flashMessages = req.flash()
     next()
 })
 
