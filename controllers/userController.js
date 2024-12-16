@@ -6,7 +6,7 @@ exports.userGet = asyncHandler(async (req, res) => {
         return res.redirect("/login")
     }
 
-    if (!req.user.membership_status) {
+    if (!req.user.membership_status && req.user.id !== Number(req.params.id)) {
         return res.redirect("/")
     }
 

@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <h1><%= user.first_name %> messages</h1>
-    <% messages.forEach(message => { %>
-        <%- include("partials/message", {message: message, isMember: currentUser.membership_status}) %>
-    <% }) %>
+    <%- include("partials/navbar") %>
+    <div class="home-container">
+        <div class="home-content">
+            <h1><%= user.first_name %> messages</h1>
+            <div class="messages-container">
+                <% messages.forEach(message => { %>
+                    <%- include("partials/message", {message: message, isMember: currentUser.membership_status}) %>
+                <% }) %>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <form action="/membership" method="post">
-        <label for="code">Enter the secret code</label>
-        <input type="text" name="code" id="code">
-        <% if (locals.errors) { %>
-            <% errors.forEach(error => { %>
-                <span><%= error.msg %></span>
-            <% }) %>
-        <% } %>
-        <button type="submit">Enter code</button>
-    </form>
+    <%- include("partials/navbar") %>
+    <div class="form-content">
+        <div class="form-container">
+            <h1 class="form-title">Membership</h1>
+            <form class="form" action="/membership" method="post">
+                <div class="form-element">
+                    <label class="label" for="code">Enter the secret code</label>
+                    <input class="input" type="text" name="code" id="code">
+                    <% if (locals.errors) { %>
+                        <% errors.forEach(error => { %>
+                            <span class="err form-err"><%= error.msg %></span>
+                        <% }) %>
+                    <% } %>
+                </div>
+                <div class="form-element"><button class="btn" type="submit">Enter code</button></div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

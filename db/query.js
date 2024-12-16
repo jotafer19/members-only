@@ -41,7 +41,7 @@ async function upgradeAdmin(user) {
 }
 
 async function getMessagesByUser(userId) {
-    const {rows} = await pool.query("SELECT u.first_name, u.last_name, m.id AS message_id, m.title, m.text, m.date, m.user_id FROM users u JOIN messages m ON u.id = m.user_id WHERE m.user_id = $1", [userId])
+    const {rows} = await pool.query("SELECT u.first_name, u.last_name, m.id AS message_id, m.title, m.text, m.date, m.user_id FROM users u JOIN messages m ON u.id = m.user_id WHERE m.user_id = $1 ORDER BY m.date DESC", [userId])
     return rows;
 }
 

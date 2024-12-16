@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/styles/navbar.css">
+<script src="/scripts/navbar.js" defer></script>
+<nav class="navbar">
+    <div class="dropdown-container">
+    <button class="dropdown-btn">
+        <span>
+            <img class="open-menu" src="/icons/menu_icon.svg" alt="Open menu">
+            <img class="close-menu hide" src="/icons/close_icon.svg" alt="Close menu">
+        </span>
+    </button>
+            <div class="dropdown-content">
+                <ul class="dropdown-list">
+                    <li><a class="link-item" href="/">Home</a></li>
+                    <li><a class="link-item" href="/messages/create">Post Message</a></li>
+                    <li><a class="link-item" href="/membership">Membership</a></li>
+                    <li><a class="link-item" href="/user/<%= locals.currentUser.id %>">Profile</a></li>
+                    <li><a class="link-item" href="/logout">Log out</a></li>
+                </ul>
+            </div>
+    </div>
+</nav>

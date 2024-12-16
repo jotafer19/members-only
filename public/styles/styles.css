@@ -10,8 +10,8 @@
     --letter-primary-color: #f0eef6;
     --link-primary-color: #ec7309;
     --link-hover-color: #c5610a;
-    --btn-primary-color: #c8bdfb;
-    --btn-hover-primary-color: #9e8af8;
+    --btn-primary-color: #d0c6fb;
+    --btn-hover-primary-color: #b2a1ff;
     --btn-border-color: #a08df8;
     --btn-radius: 4px;
     --input-radius: 1rem;
@@ -23,10 +23,14 @@ body {
 }
 
 .form-content {
-    height: 100vh;
+    height: 92svh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-content.login {
+    height: 100svh;
 }
 
 .form-container {
@@ -70,6 +74,10 @@ body {
     font-size: 1rem;
 }
 
+.input.textarea {
+    height: 200px;
+}
+
 .btn {
     border: 2px solid var(--btn-border-color);
     background-color: var(--btn-primary-color);
@@ -101,13 +109,78 @@ body {
 }
 
 /* HOME PAGE */
-.messages-container {
+.home-content {
+    height: 100svh;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.messages-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
 }
 
+/* MESSAGE */
+
 .message {
-    max-width: 300px;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--letter-primary-color);
     background-color: var(--background-secondary-color);
+    border-radius: var(--btn-radius);
+}
+
+.message:nth-child(odd) {
+    background-color: #312d41;
+}
+
+.message-title {
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--background-primary-color);
+}
+
+.message p {
+    font-size: 1rem;
+}
+
+.user-link {
+    text-decoration: none;
+    color: var(--btn-primary-color);
+}
+
+.user-link:hover {
+    color: var(--btn-hover-primary-color)
+}
+
+.delete {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 40px;;
+    border: red;
+    background-color: var(--error-color);
+}
+
+.message:hover .delete {
+    display: block;
+}
+
+.delete:hover {
+    background-color: #f24949;
 }
