@@ -1,9 +1,9 @@
-const {Router} = require("express")
-const membershipController = require("../controllers/membershipController")
+const { Router } = require("express");
+const membershipController = require("../controllers/membershipController");
 
-const membershipRouter = Router()
+const membershipRouter = Router();
 
-membershipRouter.get("/", membershipController.membershipGet)
-membershipRouter.post("/", membershipController.membershipPost)
+membershipRouter.get("/", membershipController.membershipGet);
+membershipRouter.post("/", membershipController.membershipPost);
 
 module.exports = membershipRouter;

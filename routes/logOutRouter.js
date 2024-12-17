@@ -1,7 +1,7 @@
-const {Router} = require("express")
-const logOutController = require("../controllers/logOutController")
-const logOutRouter = Router()
+const { Router } = require("express");
+const logOutController = require("../controllers/logOutController");
+const logOutRouter = Router();
 
-logOutRouter.get("/", logOutController.logOutGet)
+logOutRouter.get("/", logOutController.logOutGet);
 
-module.exports = logOutRouter
+module.exports = logOutRouter;

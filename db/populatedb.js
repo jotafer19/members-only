@@ -1,5 +1,5 @@
-const {Client} = require("pg")
-require("dotenv").config()
+const { Client } = require("pg");
+require("dotenv").config();
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
@@ -20,19 +20,19 @@ CREATE TABLE IF NOT EXISTS messages (
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-`
+`;
 
 async function main() {
-    console.log("seeding...")
-    const client = new Client({
-        connectionString: process.env.DATABASE_URL,
-    })
+  console.log("seeding...");
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
 
-    await client.connect()
-    await client.query(SQL)
-    await client.end()
+  await client.connect();
+  await client.query(SQL);
+  await client.end();
 
-    console.log("done")
+  console.log("done");
 }
 
-main()
+main();

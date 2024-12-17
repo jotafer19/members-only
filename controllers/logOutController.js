@@ -1,12 +1,12 @@
 exports.logOutGet = (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        return res.redirect("/login")
-    }
+  if (!req.isAuthenticated()) {
+    return res.redirect("/login");
+  }
 
-    req.logout(err => {
-        if (err) {
-            return next(err)
-        }
-        res.redirect("/")
-    })
-}
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};

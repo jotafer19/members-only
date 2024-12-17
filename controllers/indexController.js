@@ -1,17 +1,17 @@
-const asyncHandler = require("express-async-handler")
-const db = require("../db/query")
+const asyncHandler = require("express-async-handler");
+const db = require("../db/query");
 
 exports.indexGet = asyncHandler(async (req, res) => {
-    if (!req.isAuthenticated()) {
-        return res.redirect("/login")
-    }
+  if (!req.isAuthenticated()) {
+    return res.redirect("/login");
+  }
 
-    const allMessages = await db.getAllMessages()
-    const isMember = req.user.membership_status
+  const allMessages = await db.getAllMessages();
+  const isMember = req.user.membership_status;
 
-    if (!allMessages) {
-        throw new Error("Can not get messages")
-    }
+  if (!allMessages) {
+    throw new Error("Can not get messages");
+  }
 
-    res.render("index", {messages: allMessages, isMember: isMember})
-})
+  res.render("index", { messages: allMessages, isMember: isMember });
+});
