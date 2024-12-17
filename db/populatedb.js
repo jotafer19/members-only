@@ -20,19 +20,6 @@ CREATE TABLE IF NOT EXISTS messages (
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-INSERT INTO users(first_name, last_name, username, password)
-VALUES
-('Alice', 'Smith', 'alice.smith@example.com', 'hashedpassword1'),
-('Bob', 'Johnson', 'bob.johnson@example.com', 'hashedpassword2'),
-('Charlie', 'Brown', 'charlie.brown@example.com', 'hashedpassword3');
-
-INSERT INTO Messages(title, text, user_id)
-VALUES
-('Hello World', 'This is my first message!', 1),
-('Exciting News', 'I just upgraded to a premium account!', 2),
-('Goodbye', 'I am leaving for a while.', 3),
-('Holiday Plans', 'Looking forward to the holidays!', 1);
 `
 
 async function main() {
