@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <% if (locals.currentUser) { %>
+        <%- include("partials/navbar") %>
+    <% } %>
+    <div class="form-content">
+        <div class="form-container">
+            <img class="err-icon" src="/icons/error_icon.svg" alt="Error icon">
+            <h2 class="form-title">Oops! Something went wrong</h2>
+            <p class="error-msg"><%= error %></p>
+            <a class="btn err" href="/">Return home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <div class="form-content">
+    <div class="form-content sign-up">
         <div class="form-container">
             <h1 class="form-title">Sign Up</h1>
             <form class="form" action="/sign-up" method="post">
@@ -28,7 +28,6 @@
                 <div class="form-element">
                     <label class="label" for="username">Email</label>
                     <input class="input" type="text" name="username" id="username" value="<%= locals.oldInput ? locals.oldInput.username : "" %>">
-                    <% console.log(locals.oldInput) %>
                     <% if (locals.errors && errors.find(error => error.path === "username")) { %>
                         <span class="err form-err"><%= errors.find(error => error.path === "username").msg %></span>
                     <% } %>

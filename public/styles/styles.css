@@ -1,7 +1,13 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Roboto";
 }
 
 :root {
@@ -29,7 +35,8 @@ body {
     align-items: center;
 }
 
-.form-content.login {
+.form-content.login,
+.sign-up {
     height: 100svh;
 }
 
@@ -111,7 +118,7 @@ body {
 /* HOME PAGE */
 .home-content {
     height: 100svh;
-    overflow: scroll;
+    
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -119,6 +126,14 @@ body {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.index-title {
+    padding-top: 2rem;
+    color: var(--letter-primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .messages-container {
@@ -167,20 +182,44 @@ body {
     color: var(--btn-hover-primary-color)
 }
 
+.delete-form {
+    align-self: flex-end;
+}
+
 .delete {
     display: none;
+    padding: .2rem;
     position: absolute;
+    bottom: 0;
     right: 0;
-    bottom: 10px;
-    width: 40px;;
-    border: red;
-    background-color: var(--error-color);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .message:hover .delete {
     display: block;
 }
 
-.delete:hover {
-    background-color: #f24949;
+.btn.err {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.err-icon {
+    width: 120px;
+    margin: 0 auto;
+}
+
+.error-msg {
+    text-align: center;
+    color: var(--letter-primary-color);
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 700px) {
+    .delete {
+        display: block;
+    }
 }

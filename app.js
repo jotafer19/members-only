@@ -13,6 +13,7 @@ const logOutRouter = require("./routes/logOutRouter")
 const membershipRouter = require("./routes/membershipRouter")
 const messagesRouter = require("./routes/messagesRouter")
 const userRouter = require("./routes/userRouter")
+const errorRouter = require("./routes/404Router")
 
 // App init
 const app = express()
@@ -53,10 +54,11 @@ app.use("/logout", logOutRouter)
 app.use("/membership", membershipRouter)
 app.use("/messages", messagesRouter)
 app.use("/user", userRouter)
+app.use("*", errorRouter)
 
 app.use((err, req, res, next) => {
-    console.log(err)
-    res.status(500).send(err)
+    const errMsg = err.message || "Something went wrong"
+    res.status(err.status || 500).render("error", { error: errMsg })
 })
 
 app.listen(3000, () => console.log("connected"))

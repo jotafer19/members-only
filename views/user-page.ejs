@@ -10,7 +10,7 @@
     <%- include("partials/navbar") %>
     <div class="home-container">
         <div class="home-content">
-            <h1><%= user.first_name %> messages</h1>
+            <h1 class="index-title"><%= currentUser.id === messages[0].user_id ? "Your messages" : messages[0].first_name + " " + messages[0].last_name +"'s " + "messages" %></h1>
             <div class="messages-container">
                 <% messages.forEach(message => { %>
                     <%- include("partials/message", {message: message, isMember: currentUser.membership_status}) %>
