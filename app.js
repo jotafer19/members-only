@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("node:path");
-const session = require("cookie-session");
+const session = require("express-session");
 const passport = require("./config/passport");
 const flash = require("connect-flash");
 require("dotenv").config();
