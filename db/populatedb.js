@@ -20,6 +20,15 @@ CREATE TABLE IF NOT EXISTS messages (
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS "session" (
+  "sid" VARCHAR NOT NULL PRIMARY KEY,
+  "sess" JSON NOT NULL,
+  "expire" TIMESTAMP(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 `;
 
 async function main() {
