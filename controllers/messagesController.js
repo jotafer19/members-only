@@ -35,7 +35,7 @@ exports.createMessagePost = [
     }
     const { title, description } = req.body;
     const user = req.user;
-    const date = new Date()
+    const date = new Date();
     await db.addNewMessage(title, date, description, user.id);
     res.redirect("/");
   },
