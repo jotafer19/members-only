@@ -1,3 +1,5 @@
+Member code: `becomemember`
+
 <div align="center">
     <img alt="logo" src="./public/icons/webpage_icon.png" style="height: 100px">
     <h1>Message Board</h1>
